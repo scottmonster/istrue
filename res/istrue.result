@@ -1,0 +1,1345 @@
+=== TESTING ISTRUE FUNCTION ===
+Running comprehensive test suite...
+
+[BASIC] Testing: true
+  Description: Command 'true' should return true
+PASS - Got expected result: true
+
+[BASIC] Testing: false
+  Description: Command 'false' should return false
+PASS - Got expected result: false
+
+[BASIC] Testing: 
+  Description: Empty string should return false
+PASS - Got expected result: false
+
+[BASIC] Testing:  
+  Description: Space string should return true
+PASS - Got expected result: true
+
+[BASIC] Testing: lkjhsadfnj
+  Description: Random string should return true
+PASS - Got expected result: true
+
+[NUMERIC] Testing: 0
+  Description: Numeric 0 should return false
+PASS - Got expected result: false
+
+[NUMERIC] Testing: 1
+  Description: Numeric 1 should return true
+PASS - Got expected result: true
+
+[NUMERIC] Testing: -1
+  Description: Negative numbers should return true
+PASS - Got expected result: true
+
+[NUMERIC] Testing: 42
+  Description: Positive numbers should return true
+PASS - Got expected result: true
+
+[NUMERIC] Testing: +1
+  Description: Positive sign with number should return true
+PASS - Got expected result: true
+
+[NUMERIC] Testing: 000
+  Description: Leading zeros with zero should return false
+PASS - Got expected result: false
+
+[NUMERIC] Testing: -0
+  Description: Negative zero should return false
+PASS - Got expected result: false
+
+[NUMERIC] Testing: 01
+  Description: Non-zero with leading zero should return true
+PASS - Got expected result: true
+
+[NUMERIC] Testing: 1.0
+  Description: Float notation should be treated as string command
+PASS - Got expected result: true
+
+[COMMAND] Testing: echo hello
+  Description: Command that succeeds and outputs should return true
+PASS - Got expected result: true
+
+[COMMAND] Testing: ls /etc/passwd
+  Description: Command that lists existing file should return true
+PASS - Got expected result: true
+
+[COMMAND] Testing: ls /nonexistent/file
+  Description: Command that fails should return false
+PASS - Got expected result: false
+
+[COMMAND] Testing: grep -q root /etc/passwd
+  Description: Grep that finds a match should return true
+PASS - Got expected result: true
+
+[COMMAND] Testing: grep -q nonexistentuser /etc/passwd
+  Description: Grep that finds no match should return false
+PASS - Got expected result: false
+
+[COMMAND] Testing: command -v ls
+  Description: Command that checks if ls exists should return true
+PASS - Got expected result: true
+
+[COMMAND] Testing: command -v nonexistentcmd
+  Description: Command that checks if nonexistent command exists should return false
+PASS - Got expected result: false
+
+[QUOTES] Testing: "echo this is quoted"
+  Description: Double-quoted command should return true
+PASS - Got expected result: true
+
+[QUOTES] Testing: echo "this is partially quoted"
+  Description: Command with quoted args should return true
+PASS - Got expected result: true
+
+[QUOTES] Testing: echo "multiple" "quoted" "args"
+  Description: Command with multiple quoted args should return true
+PASS - Got expected result: true
+
+[QUOTES] Testing: echo -e "special
+chars"
+  Description: Command with special chars in quotes should return true
+PASS - Got expected result: true
+
+[QUOTES] Testing: 'true'
+  Description: Single-quoted true command should work
+PASS - Got expected result: true
+
+[QUOTES] Testing: "true"
+  Description: Double-quoted true command should work
+PASS - Got expected result: true
+
+[QUOTES] Testing: echo "nested'quotes"
+  Description: Mixed single and double quotes should work
+PASS - Got expected result: true
+
+[QUOTES] Testing: echo 'can'"'"'t'
+  Description: Escaped quotes in single quotes should work
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -f /etc/passwd
+  Description: Test for existing file should return true
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -f /nonexistent/file
+  Description: Test for non-existent file should return false
+PASS - Got expected result: false
+
+[FILE_TEST] Testing: -d /etc
+  Description: Test for existing directory should return true
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -d /nonexistent/dir
+  Description: Test for non-existent directory should return false
+PASS - Got expected result: false
+
+[FILE_TEST] Testing: -r /etc/passwd
+  Description: Test for readable file should return true
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -w /etc/passwd
+  Description: Test for writable file should return false for non-root
+PASS - Got expected result: false
+
+[FILE_TEST] Testing: -e /etc/passwd
+  Description: Test for file existence with -e should return true
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -e /nonexistent
+  Description: Test for non-existent with -e should return false
+PASS - Got expected result: false
+
+[FILE_TEST] Testing: -s /etc/passwd
+  Description: Test for non-empty file should return true
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -x /bin/ls
+  Description: Test for executable file should return true
+PASS - Got expected result: true
+
+[FILE_TEST] Testing: -x /etc/passwd
+  Description: Test for non-executable file should return false
+PASS - Got expected result: false
+
+[FILE_TEST] Testing: -L /etc/localtime || -f /etc/localtime
+  Description: Test for symlink or file should return true
+PASS - Got expected result: true
+
+[EXPRESSION] Testing: 1 -eq 1
+  Description: Expression that is true should return true
+PASS - Got expected result: true
+
+[EXPRESSION] Testing: 1 -eq 2
+  Description: Expression that is false should return false
+PASS - Got expected result: false
+
+[EXPRESSION] Testing: 5 -gt 3
+  Description: Greater than comparison that is true should return true
+PASS - Got expected result: true
+
+[EXPRESSION] Testing: 3 -gt 5
+  Description: Greater than comparison that is false should return false
+PASS - Got expected result: false
+
+[EXPRESSION] Testing: 'hello' = 'hello'
+  Description: String equality that is true should return true
+PASS - Got expected result: true
+
+[EXPRESSION] Testing: 'hello' = 'world'
+  Description: String equality that is false should return false
+PASS - Got expected result: false
+
+[EXPRESSION] Testing: 'abc' != 'def'
+  Description: String inequality should return true
+PASS - Got expected result: true
+
+[STRING_TEST] Testing: -z ''
+  Description: Empty string test with -z should return true
+PASS - Got expected result: true
+
+[STRING_TEST] Testing: -z 'content'
+  Description: Non-empty string test with -z should return false
+PASS - Got expected result: false
+
+[STRING_TEST] Testing: -n 'content'
+  Description: Non-empty string test with -n should return true
+PASS - Got expected result: true
+
+[STRING_TEST] Testing: -n ''
+  Description: Empty string test with -n should return false
+PASS - Got expected result: false
+
+[TEST_SYNTAX] Testing: [ 1 -eq 1 ]
+  Description: Single bracket test should work
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [[ 1 -eq 1 ]]
+  Description: Double bracket test should work
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: test 1 -eq 1
+  Description: Test command should work
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [[ 'hello' == 'hello' ]]
+  Description: Double equals in double brackets should work
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [[ 'hello' == hell* ]]
+  Description: Pattern matching in double brackets should work
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [[ 'hello' == bye* ]]
+  Description: Non-matching pattern should return false
+PASS - Got expected result: false
+
+[TEST_SYNTAX] Testing: [[ 'hello' =~ ^hel ]]
+  Description: Regex matching should work
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [[ 'hello' =~ ^bye ]]
+  Description: Non-matching regex should return false
+PASS - Got expected result: false
+
+[TEST_SYNTAX] Testing: [[ 3 -gt 2 ]]
+  Description: Numeric compare true in [[ ]]
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [[ 3 -gt 5 ]]
+  Description: Numeric compare false in [[ ]]
+PASS - Got expected result: false
+
+[TEST_SYNTAX] Testing: [ 3 -gt 2 ]
+  Description: Test builtin true
+PASS - Got expected result: true
+
+[TEST_SYNTAX] Testing: [ -n 'x' -a -z '' ]
+  Description: -a with true && true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((3==4))
+  Description: Arithmetic equality that is false should return false
+PASS - Got expected result: false
+
+[ARITHMETIC] Testing: ((5==5))
+  Description: Arithmetic equality that is true should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((10>5))
+  Description: Arithmetic greater than should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((3<2))
+  Description: Arithmetic less than should return false
+PASS - Got expected result: false
+
+[ARITHMETIC] Testing: ((1+1==2))
+  Description: Arithmetic addition equation should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((10/2==5))
+  Description: Arithmetic division equation should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((2**3==8))
+  Description: Arithmetic exponentiation should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((5%3==2))
+  Description: Arithmetic modulus should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((1&&1))
+  Description: Arithmetic logical AND with true values should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((1||0))
+  Description: Arithmetic logical OR should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((0))
+  Description: Arithmetic zero should return false
+PASS - Got expected result: false
+
+[ARITHMETIC] Testing: ((1))
+  Description: Arithmetic non-zero should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((-5))
+  Description: Arithmetic negative number should return true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((!0))
+  Description: Logical NOT of 0 is true
+PASS - Got expected result: true
+
+[ARITHMETIC] Testing: ((!1))
+  Description: Logical NOT of non-zero is false
+PASS - Got expected result: false
+
+[ARITHMETIC_COMPLEX] Testing: (((5+3)*2==16))
+  Description: Complex arithmetic with parentheses should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((10>5 && 3<7))
+  Description: Arithmetic with logical operators should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((1?42:0))
+  Description: Ternary operator should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((0?42:13))
+  Description: Ternary with false condition should return else value
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((2+3*4==14))
+  Description: Multiplication before addition should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((10-5-2==3))
+  Description: Left-to-right subtraction should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((2**3**2==512))
+  Description: Right-to-left exponentiation should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((1+2>2))
+  Description: Addition before comparison should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((5>3==1))
+  Description: Comparison before equality should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((1&&1&&1))
+  Description: Multiple AND operations should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((1&&1&&0))
+  Description: Multiple AND with one false should return false
+PASS - Got expected result: false
+
+[ARITHMETIC_COMPLEX] Testing: ((0||0||1))
+  Description: Multiple OR with one true should return true
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((0||0||0))
+  Description: Multiple OR all false should return false
+PASS - Got expected result: false
+
+[ARITHMETIC_COMPLEX] Testing: ((1&&(0||1)))
+  Description: AND with OR in parentheses should work
+PASS - Got expected result: true
+
+[ARITHMETIC_COMPLEX] Testing: ((!0&&!0))
+  Description: Multiple negations should work
+PASS - Got expected result: true
+
+[TERNARY] Testing: ((1?1:0))
+  Description: Ternary with true result should return true
+PASS - Got expected result: true
+
+[TERNARY] Testing: ((0?1:0))
+  Description: Ternary with false result should return false
+PASS - Got expected result: false
+
+[TERNARY] Testing: ((5>3?10:20))
+  Description: Ternary with comparison condition should work
+PASS - Got expected result: true
+
+[TERNARY] Testing: ((5<3?10:20))
+  Description: Ternary false condition should evaluate else branch
+PASS - Got expected result: true
+
+[TERNARY] Testing: ((1?1?1:0:0))
+  Description: Nested ternary should work
+PASS - Got expected result: true
+
+[COMPLEX] Testing: [ -f /etc/passwd ] && [ -d /etc ]
+  Description: AND expression with both parts true should return true
+PASS - Got expected result: true
+
+[COMPLEX] Testing: [ -f /nonexistent ] && [ -d /etc ]
+  Description: AND expression with first part false should return false
+PASS - Got expected result: false
+
+[COMPLEX] Testing: [ -f /nonexistent ] || [ -d /etc ]
+  Description: OR expression with second part true should return true
+PASS - Got expected result: true
+
+[COMPLEX] Testing: [ -f /nonexistent ] || [ -d /nonexistent ]
+  Description: OR expression with both parts false should return false
+PASS - Got expected result: false
+
+[COMPLEX] Testing: [[ -f /etc/passwd && -d /etc ]]
+  Description: Multiple conditions in double brackets should work
+PASS - Got expected result: true
+
+[COMPLEX] Testing: [[ -f /etc/passwd ]] && [[ -d /etc ]]
+  Description: Multiple separate test conditions should work
+PASS - Got expected result: true
+
+[COMPLEX] Testing: (( (5>3) && (10>8) ))
+  Description: Nested comparisons in arithmetic should work
+PASS - Got expected result: true
+
+Setting test variables...
+[VARIABLES] Testing: \$TRUE_VAR
+  Description: Variable reference (not value) should be false without eval
+PASS - Got expected result: false
+
+[VARIABLES] Testing: "\\$TRUE_VAR"
+  Description: Quoted variable reference should be false without eval
+PASS - Got expected result: false
+
+[VARIABLES] Testing: true
+  Description: Expanded true variable should return true
+PASS - Got expected result: true
+
+[VARIABLES] Testing: false
+  Description: Expanded false variable should return false
+PASS - Got expected result: false
+
+[VARIABLES] Testing: 
+  Description: Expanded empty variable should return false
+PASS - Got expected result: false
+
+[VARIABLES] Testing: ${UNSET_VAR}
+  Description: Brace expansion of unset var should return false
+PASS - Got expected result: false
+
+[VARIABLES] Testing: 
+  Description: Unset expands to empty should return false
+PASS - Got expected result: false
+
+[VARIABLES] Testing: true
+  Description: Parameter expansion inside substitution should work
+PASS - Got expected result: true
+
+[EDGE] Testing: true
+  Description: Command substitution with true should return true
+PASS - Got expected result: true
+
+[EDGE] Testing: false
+  Description: Command substitution with false should return false
+PASS - Got expected result: false
+
+[EDGE] Testing: ; echo safe
+  Description: Command that fails but semicolon separates should still run second part
+PASS - Got expected result: true
+
+[EDGE] Testing: $(ls) > /dev/null
+  Description: Command with output redirection should work as expected
+PASS - Got expected result: true
+
+[EDGE] Testing: `true`
+  Description: Backtick command substitution with true should return true
+PASS - Got expected result: true
+
+[EDGE] Testing: `false`
+  Description: Backtick command substitution with false should return false
+PASS - Got expected result: false
+
+[EDGE] Testing: true
+  Description: Legacy backticks substitution
+PASS - Got expected result: true
+
+[EDGE] Testing:   true  
+  Description: Substitution with spaces around true
+PASS - Got expected result: true
+
+[INVALID] Testing: ((1+2)
+  Description: Malformed arithmetic expression should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: ((1+2)))
+  Description: Extra parenthesis should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: ((
+  Description: Empty arithmetic expression should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: ((3 4))
+  Description: Missing operator should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: ((+))
+  Description: Operator without operands should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: ((3===4))
+  Description: Invalid operator should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: ((1 2 3))
+  Description: Numbers without operators should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: ((++))
+  Description: Increment without variable should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: ((--))
+  Description: Decrement without variable should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: ((1/))
+  Description: Division without second operand should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: ((*/2))
+  Description: Multiplication without first operand should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: [[]]
+  Description: Empty double bracket test should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: []
+  Description: Empty single bracket test should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: ((1+
+  Description: Unclosed arithmetic should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: [[ 1 -eq
+  Description: Incomplete comparison should fail
+PASS - Got expected result: false
+
+[INVALID] Testing: [[
+  Description: Dangling [[ should be false
+PASS - Got expected result: false
+
+[INVALID] Testing: ]
+  Description: Stray ] is syntax error should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: fi
+  Description: Dangling fi should return false
+PASS - Got expected result: false
+
+[INVALID] Testing: }
+  Description: Stray brace should return false
+PASS - Got expected result: false
+
+[BITWISE] Testing: ((8>>2==2))
+  Description: Right shift should work
+PASS - Got expected result: true
+
+[BITWISE] Testing: ((2<<1==4))
+  Description: Left shift should work
+PASS - Got expected result: true
+
+[BITWISE] Testing: (((5&3)==1))
+  Description: Bitwise AND should work
+PASS - Got expected result: true
+
+[BITWISE] Testing: ((5|3==7))
+  Description: Bitwise OR should work
+PASS - Got expected result: true
+
+[BITWISE] Testing: ((5^3==6))
+  Description: Bitwise XOR should work
+PASS - Got expected result: true
+
+[BITWISE] Testing: ((~0==-1))
+  Description: Bitwise NOT of 0 should be -1
+PASS - Got expected result: true
+
+[BITWISE] Testing: ((~-1==0))
+  Description: Bitwise NOT of -1 should be 0
+PASS - Got expected result: true
+
+[BITWISE] Testing: (((~5&5)==0))
+  Description: Number AND its complement should be 0
+PASS - Got expected result: true
+
+[BITWISE] Testing: (( (3&~1)==2 ))
+  Description: Masking with bitwise NOT
+PASS - Got expected result: true
+
+[BOOLEAN_CASE] Testing: TRUE
+  Description: Uppercase TRUE should be true
+PASS - Got expected result: true
+
+[BOOLEAN_CASE] Testing: False
+  Description: Mixed-case False should be false
+PASS - Got expected result: false
+
+[WHITESPACE] Testing:    true
+  Description: Leading spaces before true should be true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing: false   
+  Description: Trailing spaces after false should be false
+PASS - Got expected result: false
+
+[WHITESPACE] Testing:   TrUe  
+  Description: Spaces around mixed-case true should be true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing: 	
+  Description: Tab character should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing:    
+  Description: Multiple spaces should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing: 
+
+  Description: Newline character should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing: 	
+  Description: Tab via ANSI-C quoting should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing:   1  
+  Description: Number with surrounding spaces should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing: hello
+world
+  Description: String with embedded newline should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing: 
+
+  Description: CRLF should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing:  	 
+ 
+  Description: Mixed ASCII whitespace only should return true
+PASS - Got expected result: true
+
+[WHITESPACE] Testing:  	true	 
+  Description: Whitespace with bare true in middle should be true
+PASS - Got expected result: true
+
+[NEGATION] Testing: ! false
+  Description: Negation of false should return true
+PASS - Got expected result: true
+
+[NEGATION] Testing: ! true
+  Description: Negation of true should return false
+PASS - Got expected result: false
+
+[NEGATION] Testing: ! -f /nonexistent
+  Description: Negation of false file test should return true
+PASS - Got expected result: true
+
+[NEGATION] Testing: ! -d /etc
+  Description: Negation of true directory test should return false
+PASS - Got expected result: false
+
+[NEGATION] Testing: ! ((0))
+  Description: Negation of arithmetic zero should return true
+PASS - Got expected result: true
+
+[NEGATION] Testing: ! ((1))
+  Description: Negation of arithmetic non-zero should return false
+PASS - Got expected result: false
+
+[CHAINING] Testing: true && true
+  Description: AND chain with both true should return true
+PASS - Got expected result: true
+
+[CHAINING] Testing: true && false
+  Description: AND chain with second false should return false
+PASS - Got expected result: false
+
+[CHAINING] Testing: false || true
+  Description: OR chain with second true should return true
+PASS - Got expected result: true
+
+[CHAINING] Testing: false || false
+  Description: OR chain with both false should return false
+PASS - Got expected result: false
+
+[CHAINING] Testing: true && false || true
+  Description: AND/OR precedence should yield true
+PASS - Got expected result: true
+
+[CHAINING] Testing: ( false && true ) || ( true && true )
+  Description: Grouped logic should be true
+PASS - Got expected result: true
+
+[PIPES] Testing: echo test | grep -q test
+  Description: Pipe to grep with match should return true
+PASS - Got expected result: true
+
+[PIPES] Testing: echo test | grep -q nomatch
+  Description: Pipe to grep without match should return false
+PASS - Got expected result: false
+
+[PIPES] Testing: true | true
+  Description: Pipe between true commands should return true
+PASS - Got expected result: true
+
+[PIPES] Testing: false | true
+  Description: Pipe returns exit status of last command
+PASS - Got expected result: true
+
+[PIPES] Testing: true | false
+  Description: Pipeline exit is last cmd (false)
+PASS - Got expected result: false
+
+[PIPES] Testing: echo ok | grep -q ok
+  Description: grep finds 'ok' should return true
+PASS - Got expected result: true
+
+[PIPES] Testing: echo ok | grep -q no
+  Description: grep does not find 'no' should return false
+PASS - Got expected result: false
+
+[SUBSHELL] Testing: (true)
+  Description: Subshell with true should return true
+PASS - Got expected result: true
+
+[SUBSHELL] Testing: (false)
+  Description: Subshell with false should return false
+PASS - Got expected result: false
+
+[SUBSHELL] Testing: (exit 0)
+  Description: Subshell with exit 0 should return true
+PASS - Got expected result: true
+
+[SUBSHELL] Testing: (exit 1)
+  Description: Subshell with exit 1 should return false
+PASS - Got expected result: false
+
+[SUBSHELL] Testing: (exit 42)
+  Description: Subshell with non-zero exit should return false
+PASS - Got expected result: false
+
+[SUBSHELL] Testing: (exit 127)
+  Description: Exit 127 (command not found) should return false
+PASS - Got expected result: false
+
+[SUBSHELL] Testing: (exit 255)
+  Description: Exit 255 should return false
+PASS - Got expected result: false
+
+[BLOCK] Testing: { true; }
+  Description: Brace group true
+PASS - Got expected result: true
+
+[BLOCK] Testing: { false; }
+  Description: Brace group false
+PASS - Got expected result: false
+
+[BLOCK] Testing: { echo x >/dev/null; true; }
+  Description: Multi-command block final status true
+PASS - Got expected result: true
+
+[BLOCK] Testing: { true; false; }
+  Description: Last command determines status should return false
+PASS - Got expected result: false
+
+[BLOCK] Testing: false; true
+  Description: Semicolon sequence should return status of last (true)
+PASS - Got expected result: true
+
+[BLOCK] Testing: true; false
+  Description: Last command false should return overall false
+PASS - Got expected result: false
+
+[BLOCK] Testing: { false; :; }
+  Description: ':' builtin succeeds, last wins should return true
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo \!
+  Description: Escaped exclamation should work
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo \$HOME
+  Description: Escaped dollar sign should work
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo \*
+  Description: Escaped asterisk should work
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo \;
+  Description: Escaped semicolon should work
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo "a|b"
+  Description: Quoted pipe character should work
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo "a&b"
+  Description: Quoted ampersand should work
+PASS - Got expected result: true
+
+[SPECIAL_CHARS] Testing: echo "a*b"
+  Description: Quoted glob should not expand; echo exits 0
+PASS - Got expected result: true
+
+[COMPARISON] Testing: ((0==0))
+  Description: Zero equality should return true
+PASS - Got expected result: true
+
+[COMPARISON] Testing: ((-1==-1))
+  Description: Negative equality should return true
+PASS - Got expected result: true
+
+[COMPARISON] Testing: ((1!=2))
+  Description: Inequality should return true
+PASS - Got expected result: true
+
+[COMPARISON] Testing: ((1!=1))
+  Description: False inequality should return false
+PASS - Got expected result: false
+
+[COMPARISON] Testing: ((5>=5))
+  Description: Greater than or equal with equal should return true
+PASS - Got expected result: true
+
+[COMPARISON] Testing: ((5>=6))
+  Description: Greater than or equal with less should return false
+PASS - Got expected result: false
+
+[COMPARISON] Testing: ((3<=3))
+  Description: Less than or equal with equal should return true
+PASS - Got expected result: true
+
+[COMPARISON] Testing: ((3<=2))
+  Description: Less than or equal with greater should return false
+PASS - Got expected result: false
+
+[EMPTY_CMD] Testing: :
+  Description: Colon (no-op) command should return true
+PASS - Got expected result: true
+
+[EMPTY_CMD] Testing: true;
+  Description: Command with trailing semicolon should work
+PASS - Got expected result: true
+
+[EMPTY_CMD] Testing: true ;true
+  Description: Two commands separated by semicolon should work
+PASS - Got expected result: true
+
+[EMPTY_CMD] Testing: exit 0 || true
+  Description: Exit in subshell with OR fallback should work
+PASS - Got expected result: true
+
+[REDIRECT] Testing: echo test >/dev/null
+  Description: Stdout redirect should succeed
+PASS - Got expected result: true
+
+[REDIRECT] Testing: echo test 2>/dev/null
+  Description: Stderr redirect should succeed
+PASS - Got expected result: true
+
+[REDIRECT] Testing: echo test &>/dev/null
+  Description: Both stdout and stderr redirect should succeed
+PASS - Got expected result: true
+
+[REDIRECT] Testing: ls /nonexistent 2>/dev/null
+  Description: Failed command with stderr redirect should return false
+PASS - Got expected result: false
+
+[REDIRECT] Testing: cat /etc/passwd >/dev/null
+  Description: Read file to null should succeed
+PASS - Got expected result: true
+
+[REDIRECT] Testing: true >/dev/null 2>&1
+  Description: True with redirection should be true
+PASS - Got expected result: true
+
+[REDIRECT] Testing: false 2>/dev/null
+  Description: False remains false even with redirection
+PASS - Got expected result: false
+
+[REDIRECT] Testing: cat </dev/null
+  Description: Input redirection should succeed
+PASS - Got expected result: true
+
+[REDIRECT] Testing: cat <<< hi >/dev/null
+  Description: Here-string should succeed
+PASS - Got expected result: true
+
+[REDIRECT] Testing: grep -q hi <<<'hi'
+  Description: Here-string with grep should be true
+PASS - Got expected result: true
+
+[NESTED] Testing: ((((1))))
+  Description: Quadruple nested parentheses should work
+PASS - Got expected result: true
+
+[NESTED] Testing: ((((5+3)*2-1)==15))
+  Description: Nested arithmetic with operations should work
+PASS - Got expected result: true
+
+[COMMA] Testing: ((1,2,3))
+  Description: Comma operator should return last value
+PASS - Got expected result: true
+
+[COMMA] Testing: ((5,0))
+  Description: Comma operator with last value 0 should return false
+PASS - Got expected result: false
+
+[COMMA] Testing: ((0,1))
+  Description: Comma operator should ignore first value
+PASS - Got expected result: true
+
+[COMMA] Testing: ((x=1,y=2,x+y))
+  Description: Comma with assignments should work
+PASS - Got expected result: true
+
+[COMMA] Testing: ((x=5,x==5))
+  Description: Assignment in arithmetic should work
+PASS - Got expected result: true
+
+[COMMA] Testing: ((y=0,!y))
+  Description: Assignment of zero then negation should work
+PASS - Got expected result: true
+
+[COMMA] Testing: ((a=1,b=2,a+b==3))
+  Description: Multiple assignments should work
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((00==0))
+  Description: Leading zeros should be ignored
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((007==7))
+  Description: Multiple leading zeros should be ignored
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((0x10==16))
+  Description: Hexadecimal notation should work
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((0x0==0))
+  Description: Hex zero should equal decimal zero
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((0xFF==255))
+  Description: Uppercase hex should work
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((9999999999>1))
+  Description: Very large number comparison should work
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((999999999999999999>0))
+  Description: Extremely large number should work
+PASS - Got expected result: true
+
+[NUMBER_EDGE] Testing: ((1000000*1000000==1000000000000))
+  Description: Large multiplication should work
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((10/3==3))
+  Description: Integer division should truncate
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((10/3==3.33))
+  Description: Floating point comparison should fail (bash uses integers)
+PASS - Got expected result: false
+
+[DIVISION] Testing: ((7%4==3))
+  Description: Modulo operation should work
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((100%10==0))
+  Description: Even modulo should return 0
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((-10%3==-1))
+  Description: Negative modulo should work
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((100-100==0))
+  Description: Subtraction to zero should work
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((1-1==0))
+  Description: Simple subtraction to zero should work
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((0*1000000==0))
+  Description: Multiply by zero should give zero
+PASS - Got expected result: true
+
+[DIVISION] Testing: ((0+0==0))
+  Description: Zero addition should work
+PASS - Got expected result: true
+
+[DIVISION] Testing: (( 10/0 ))
+  Description: Division by zero should be false
+PASS - Got expected result: false
+
+[UNARY] Testing: ((-5<0))
+  Description: Negative number less than zero should return true
+PASS - Got expected result: true
+
+[UNARY] Testing: ((+5>0))
+  Description: Positive number greater than zero should return true
+PASS - Got expected result: true
+
+[UNARY] Testing: ((-(-5)==5))
+  Description: Double negation should work
+PASS - Got expected result: true
+
+[UNARY] Testing: ((-(5)==-5))
+  Description: Negation of positive should work
+PASS - Got expected result: true
+
+[STRING_EDGE] Testing: [[ '' = '' ]]
+  Description: Empty string equality should return true
+PASS - Got expected result: true
+
+[STRING_EDGE] Testing: [[ 'a' < 'b' ]]
+  Description: Lexicographic less than should work
+PASS - Got expected result: true
+
+[STRING_EDGE] Testing: [[ 'b' > 'a' ]]
+  Description: Lexicographic greater than should work
+PASS - Got expected result: true
+
+[STRING_EDGE] Testing: [[ '10' < '9' ]]
+  Description: String comparison (not numeric) should work
+PASS - Got expected result: true
+
+[STRING_EDGE] Testing: [[ 'ABC' == 'abc' ]]
+  Description: Case-sensitive comparison should work
+PASS - Got expected result: false
+
+[STRING_EDGE] Testing: [[ 'ABC' != 'abc' ]]
+  Description: Case-sensitive comparison should work
+PASS - Got expected result: true
+
+[PROCESS_EXIT] Testing: bash -c 'exit 0'
+  Description: Bash subprocess with exit 0 should return true
+PASS - Got expected result: true
+
+[PROCESS_EXIT] Testing: bash -c 'exit 1'
+  Description: Bash subprocess with exit 1 should return false
+PASS - Got expected result: false
+
+[PROCESS_EXIT] Testing: sh -c true
+  Description: Shell subprocess with true should return true
+PASS - Got expected result: true
+
+[PROCESS_EXIT] Testing: sh -c false
+  Description: Shell subprocess with false should return false
+PASS - Got expected result: false
+
+[STRESS] Testing: ((1+1+1+1+1+1+1+1+1+1==10))
+  Description: Long addition chain should work
+PASS - Got expected result: true
+
+[STRESS] Testing: ((1*1*1*1*1*1*1*1*1*1==1))
+  Description: Long multiplication chain should work
+PASS - Got expected result: true
+
+[STRESS] Testing: ((1&&1&&1&&1&&1&&1&&1&&1&&1))
+  Description: Long logical AND chain should work
+PASS - Got expected result: true
+
+[STRESS] Testing: ((0||0||0||0||0||0||0||0||1))
+  Description: Long logical OR chain should work
+PASS - Got expected result: true
+
+[STRESS] Testing: (( (1<<30) > (1<<29) ))
+  Description: Shifts with big numbers
+PASS - Got expected result: true
+
+[BUILTINS] Testing: type ls >/dev/null 2>&1
+  Description: Type command should succeed for existing command
+PASS - Got expected result: true
+
+[BUILTINS] Testing: type nonexistentcmd123 >/dev/null 2>&1
+  Description: Type command should fail for non-existent command
+PASS - Got expected result: false
+
+[BUILTINS] Testing: command -v bash >/dev/null
+  Description: Command -v should succeed for bash
+PASS - Got expected result: true
+
+[BUILTINS] Testing: which ls >/dev/null 2>&1
+  Description: Which command should find ls
+PASS - Got expected result: true
+
+[GLOB] Testing: [[ /etc/passwd == /etc/passwd ]]
+  Description: Exact path match should work
+PASS - Got expected result: true
+
+[GLOB] Testing: [[ /etc/passwd == /etc/* ]]
+  Description: Wildcard pattern should match
+PASS - Got expected result: true
+
+[GLOB] Testing: [[ /etc/passwd == /tmp/* ]]
+  Description: Non-matching wildcard should fail
+PASS - Got expected result: false
+
+[GLOB] Testing: [[ abc == a?c ]]
+  Description: Question mark wildcard should match
+PASS - Got expected result: true
+
+[GLOB] Testing: [[ abc == a??c ]]
+  Description: Wrong number of wildcards should not match
+PASS - Got expected result: false
+
+[GLOB] Testing: echo * >/dev/null
+  Description: Glob expansion typically succeeds
+PASS - Got expected result: true
+
+[GLOB] Testing: echo {a,b} >/dev/null
+  Description: Brace expansion produces words; echo succeeds
+PASS - Got expected result: true
+
+[GLOB] Testing: [[ a == a* ]]
+  Description: Pattern match true
+PASS - Got expected result: true
+
+[GLOB] Testing: [[ a == b* ]]
+  Description: Pattern match false
+PASS - Got expected result: false
+
+[SHORT_CIRCUIT] Testing: false && nonexistentcommand123
+  Description: AND should short-circuit on false
+PASS - Got expected result: false
+
+[SHORT_CIRCUIT] Testing: true || nonexistentcommand123
+  Description: OR should short-circuit on true
+PASS - Got expected result: true
+
+[SHORT_CIRCUIT] Testing: ((0 && 1/0))
+  Description: Arithmetic AND should short-circuit (avoid division by zero)
+PASS - Got expected result: false
+
+[SHORT_CIRCUIT] Testing: ((1 || 1/0))
+  Description: Arithmetic OR should short-circuit (avoid division by zero)
+PASS - Got expected result: true
+
+[FS_TMP] Testing: f=$(mktemp) && [[ -f "$f" ]]
+  Description: mktemp created file exists
+PASS - Got expected result: true
+
+[FS_TMP] Testing: f=$(mktemp) && rm -f "$f" && [[ -e "$f" ]]
+  Description: Removed temp file should not exist
+PASS - Got expected result: false
+
+[FS_TMP] Testing: d=$(mktemp -d) && [[ -d "$d" ]]
+  Description: mktemp -d creates directory
+PASS - Got expected result: true
+
+[FS_TMP] Testing: d=$(mktemp -d) && rmdir "$d" && [[ -d "$d" ]]
+  Description: Removed temp dir should not exist
+PASS - Got expected result: false
+
+[ENV_ISO] Testing: export X=1; [[ -n "$X" ]]
+  Description: Environment inside eval is visible to itself
+PASS - Got expected result: true
+
+[ENV_ISO] Testing: [[ -z "$SOME_DEF_NOT_SET" ]]
+  Description: Unset var empty inside subshell
+PASS - Got expected result: true
+
+[ARITH_LIMITS] Testing: (( 2147483647 > 0 ))
+  Description: Large positive int
+PASS - Got expected result: true
+
+[ARITH_LIMITS] Testing: (( -2147483648 < 0 ))
+  Description: Large negative int
+PASS - Got expected result: true
+
+[BOOLEAN_WORDS] Testing: yes
+  Description: Common true synonym 'yes' should be true (if supported)
+PASS - Got expected result: true
+
+[BOOLEAN_WORDS] Testing: no
+  Description: Common false synonym 'no' should be false (if supported)
+PASS - Got expected result: false
+
+[BOOLEAN_WORDS] Testing: on
+  Description: 'on' should be true (if supported)
+PASS - Got expected result: true
+
+[BOOLEAN_WORDS] Testing: off
+  Description: 'off' should be false (if supported)
+PASS - Got expected result: false
+
+[BOOLEAN_WORDS] Testing: y
+  Description: Single-letter 'y' should be true (if supported)
+PASS - Got expected result: true
+
+[BOOLEAN_WORDS] Testing: n
+  Description: Single-letter 'n' should be false (if supported)
+PASS - Got expected result: false
+
+[BOOLEAN_WORDS] Testing: enable
+  Description: 'enable' should be true (if supported)
+PASS - Got expected result: true
+
+[BOOLEAN_WORDS] Testing: disable
+  Description: 'disable' should be false (if supported)
+PASS - Got expected result: false
+
+[FILE_TIME] Testing: f1=$(mktemp) && sleep 1 && f2=$(mktemp) && [[ "$f2" -nt "$f1" ]]
+  Description: -nt newer-than should be true
+PASS - Got expected result: true
+
+[FILE_TIME] Testing: f1=$(mktemp) && sleep 1 && f2=$(mktemp) && [[ "$f1" -ot "$f2" ]]
+  Description: -ot older-than should be true
+PASS - Got expected result: true
+
+[FILE_LINK] Testing: t=$(mktemp) && ln -s "$t" s && [[ -L s && -e s ]]
+  Description: Symlink to existing target: -L and -e true
+PASS - Got expected result: true
+
+[FILE_LINK] Testing: ln -s /nonexistent s && [[ -L s && ! -e s ]]
+  Description: Broken symlink: -L true, -e false
+PASS - Got expected result: true
+
+[FILE_SPECIAL] Testing: p=$(mktemp -u) && mkfifo "$p" && [[ -p "$p" ]]
+  Description: Named pipe should satisfy -p
+PASS - Got expected result: true
+
+[FD_TTY] Testing: true <&-
+  Description: Command succeeds with stdin closed
+PASS - Got expected result: true
+
+[FD_TTY] Testing: cat <&- >/dev/null
+  Description: cat fails when stdin closed
+PASS - Got expected result: false
+
+[BG_WAIT] Testing: false & wait %1
+  Description: Background false reported by wait should be false
+PASS - Got expected result: false
+
+[BG_WAIT] Testing: true & wait %1
+  Description: Background true reported by wait should be true
+PASS - Got expected result: true
+
+[BG_WAIT] Testing: false & :; wait %1 || :; true
+  Description: Recover after bg failure and succeed overall
+PASS - Got expected result: true
+
+[PROC_SUB] Testing: diff <(echo a) <(echo a) >/dev/null
+  Description: Process substitution identical diff should be true
+PASS - Got expected result: true
+
+[PROC_SUB] Testing: comm <(printf 'a
+b
+') <(printf 'a
+c
+') >/dev/null
+  Description: comm executes successfully
+PASS - Got expected result: true
+
+[BASH_SHOPT] Testing: bash -c 'shopt -s extglob; [[ aaaa == a+(a) ]]'
+  Description: Extended globbing should match with extglob
+PASS - Got expected result: true
+
+[BASH_SHOPT] Testing: bash -c 'shopt -s nocasematch; [[ Foo == foo ]]'
+  Description: nocasematch makes [[ ]] case-insensitive
+PASS - Got expected result: true
+
+[BASH_SHOPT] Testing: bash -c 'shopt -u nocasematch; [[ Foo == foo ]]'
+  Description: Without nocasematch, case differs
+PASS - Got expected result: false
+
+[EXEC_FAIL] Testing: f=$(mktemp); echo "echo hi" >"$f"; chmod -x "$f"; "$f" >/dev/null 2>&1
+  Description: Non-executable script: exit 126 should be false
+PASS - Got expected result: false
+
+[EXEC_FAIL] Testing: d=$(mktemp -d); "$d" >/dev/null 2>&1
+  Description: Attempting to exec a directory should be false
+PASS - Got expected result: false
+
+[UNICODE_WS] Testing:  
+  Description: NBSP should count as whitespace-only input (if treated as non-empty true)
+PASS - Got expected result: true
+
+[UNICODE_WS] Testing:  
+  Description: Em space treated as whitespace-only (if non-empty is true)
+PASS - Got expected result: true
+
+[UNICODE_WS] Testing:    	 
+  Description: Mixed ASCII + Unicode whitespace
+PASS - Got expected result: true
+
+[ENV_IFS] Testing: IFS=, bash -c 'test x,y = x,y' 
+  Description: Setting IFS should not break simple equality
+PASS - Got expected result: true
+
+[ENV_IFS] Testing: IFS= bash -c '[[ -n $IFS ]]' 
+  Description: Empty IFS still defined, -n true
+PASS - Got expected result: true
+
+[DOUBLE_BRACKET] Testing: [[ abc =~ ^a.c$ ]]
+  Description: Regex dot should match single char
+PASS - Got expected result: true
+
+[DOUBLE_BRACKET] Testing: [[ abc =~ ^ab$ ]]
+  Description: Regex strict anchor should fail
+PASS - Got expected result: false
+
+[DOUBLE_BRACKET] Testing: [[ -v BASH_VERSION ]]
+  Description: -v var set test (bash>=4.2)
+PASS - Got expected result: true
+
+[DOUBLE_BRACKET] Testing: bash -c 'unset ZZ; [[ ! -v ZZ ]]'
+  Description: -v unset var should be false; negation true
+PASS - Got expected result: true
+
+[LONG_ARG] Testing: printf '%*s' 5000 x >/dev/null
+  Description: Long arg handling via printf should succeed
+PASS - Got expected result: true
+
+=== TEST SUMMARY ===
+Tests run:    332
+Tests passed: 332
+Tests failed: 0

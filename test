@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+exec 2>&1
+
+
+dirs="work"
+
+resdir=res
+mkdir -p $resdir
+
+for dir in $dirs; do
+    # Check if directory exists
+    if [[ ! -d "$dir" ]]; then
+        echo "Directory $dir does not exist, skipping..."
+        continue
+    fi
+    
+    # Find files in the directory (adjust pattern as needed)
+    for file in "$dir"/*; do
+        # Skip if no files match the pattern
+
+        [[ "${file##*/}" == *.result* ]] && continue
+        [[ "${file##*/}" == *.result ]] && continue
+
+        [[ ! -e "$file" ]] && continue
+        
+        # Get just the filename without path
+        filename=$(basename "$file")
+        
+        # outfile="$dir/$filename.result"
+        colorfile="$resdir/$filename.result.color"
+        textfile="$dir/$filename.result"
+        
+        # Check if result file doesn't exist
+        if [[ ! -e "$textfile" ]]; then
+            echo "Running test on $file..."
+            /home/scott/share/expression/istrue_test "$file" > "$colorfile"
+            # echo "$result"
+            cat "$colorfile" | sed 's/\x1b\[[0-9;]*m//g' > "$textfile"
+        else
+            echo "Result file $textfile already exists, skipping..."
+        fi
+    done
+done
+
+
+# dirs="c5 son4"
+
+# for dir in $dirs; do
+#     # Check if directory exists
+#     if [[ ! -d "$dir" ]]; then
+#         echo "Directory $dir does not exist, skipping..."
+#         continue
+#     fi
+    
+#     # Find files in the directory (adjust pattern as needed)
+#     for file in "$dir"/*; do
+#         # Skip result files
+#         [[ "${file##*/}" == *.result ]] && continue
+        
+#         # Skip if no files match the pattern
+#         [[ ! -e "$file" ]] && continue
+        
+#         # Get just the filename without path
+#         filename=$(basename "$file")
+        
+#         outfile="$dir/$filename.result"
+        
+#         # Check if result file doesn't exist
+#         if [[ ! -e "$outfile" ]]; then
+#             echo "Running test on $file..."
+#             /home/scott/share/expression/istrue_test "$file" 2>&1 | sed 's/\x1b\[[0-9;]*m//g' > "$outfile"
+#         else
+#             echo "Result file $outfile already exists, skipping..."
+#         fi
+#     done
+# done

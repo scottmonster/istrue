@@ -1,0 +1,1345 @@
+=== TESTING ISTRUE FUNCTION ===
+Running comprehensive test suite...
+
+[0;34m[BASIC][0m Testing: [1;33mtrue[0m
+  Description: Command 'true' should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BASIC][0m Testing: [1;33mfalse[0m
+  Description: Command 'false' should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BASIC][0m Testing: [1;33m[0m
+  Description: Empty string should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BASIC][0m Testing: [1;33m [0m
+  Description: Space string should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BASIC][0m Testing: [1;33mlkjhsadfnj[0m
+  Description: Random string should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMERIC][0m Testing: [1;33m0[0m
+  Description: Numeric 0 should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[NUMERIC][0m Testing: [1;33m1[0m
+  Description: Numeric 1 should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMERIC][0m Testing: [1;33m-1[0m
+  Description: Negative numbers should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMERIC][0m Testing: [1;33m42[0m
+  Description: Positive numbers should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMERIC][0m Testing: [1;33m+1[0m
+  Description: Positive sign with number should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMERIC][0m Testing: [1;33m000[0m
+  Description: Leading zeros with zero should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[NUMERIC][0m Testing: [1;33m-0[0m
+  Description: Negative zero should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[NUMERIC][0m Testing: [1;33m01[0m
+  Description: Non-zero with leading zero should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMERIC][0m Testing: [1;33m1.0[0m
+  Description: Float notation should be treated as string command
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMAND][0m Testing: [1;33mecho hello[0m
+  Description: Command that succeeds and outputs should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMAND][0m Testing: [1;33mls /etc/passwd[0m
+  Description: Command that lists existing file should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMAND][0m Testing: [1;33mls /nonexistent/file[0m
+  Description: Command that fails should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMMAND][0m Testing: [1;33mgrep -q root /etc/passwd[0m
+  Description: Grep that finds a match should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMAND][0m Testing: [1;33mgrep -q nonexistentuser /etc/passwd[0m
+  Description: Grep that finds no match should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMMAND][0m Testing: [1;33mcommand -v ls[0m
+  Description: Command that checks if ls exists should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMAND][0m Testing: [1;33mcommand -v nonexistentcmd[0m
+  Description: Command that checks if nonexistent command exists should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[QUOTES][0m Testing: [1;33m"echo this is quoted"[0m
+  Description: Double-quoted command should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33mecho "this is partially quoted"[0m
+  Description: Command with quoted args should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33mecho "multiple" "quoted" "args"[0m
+  Description: Command with multiple quoted args should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33mecho -e "special
+chars"[0m
+  Description: Command with special chars in quotes should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33m'true'[0m
+  Description: Single-quoted true command should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33m"true"[0m
+  Description: Double-quoted true command should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33mecho "nested'quotes"[0m
+  Description: Mixed single and double quotes should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[QUOTES][0m Testing: [1;33mecho 'can'"'"'t'[0m
+  Description: Escaped quotes in single quotes should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-f /etc/passwd[0m
+  Description: Test for existing file should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-f /nonexistent/file[0m
+  Description: Test for non-existent file should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-d /etc[0m
+  Description: Test for existing directory should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-d /nonexistent/dir[0m
+  Description: Test for non-existent directory should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-r /etc/passwd[0m
+  Description: Test for readable file should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-w /etc/passwd[0m
+  Description: Test for writable file should return false for non-root
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-e /etc/passwd[0m
+  Description: Test for file existence with -e should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-e /nonexistent[0m
+  Description: Test for non-existent with -e should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-s /etc/passwd[0m
+  Description: Test for non-empty file should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-x /bin/ls[0m
+  Description: Test for executable file should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-x /etc/passwd[0m
+  Description: Test for non-executable file should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FILE_TEST][0m Testing: [1;33m-L /etc/localtime || -f /etc/localtime[0m
+  Description: Test for symlink or file should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EXPRESSION][0m Testing: [1;33m1 -eq 1[0m
+  Description: Expression that is true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EXPRESSION][0m Testing: [1;33m1 -eq 2[0m
+  Description: Expression that is false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EXPRESSION][0m Testing: [1;33m5 -gt 3[0m
+  Description: Greater than comparison that is true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EXPRESSION][0m Testing: [1;33m3 -gt 5[0m
+  Description: Greater than comparison that is false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EXPRESSION][0m Testing: [1;33m'hello' = 'hello'[0m
+  Description: String equality that is true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EXPRESSION][0m Testing: [1;33m'hello' = 'world'[0m
+  Description: String equality that is false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EXPRESSION][0m Testing: [1;33m'abc' != 'def'[0m
+  Description: String inequality should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_TEST][0m Testing: [1;33m-z ''[0m
+  Description: Empty string test with -z should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_TEST][0m Testing: [1;33m-z 'content'[0m
+  Description: Non-empty string test with -z should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[STRING_TEST][0m Testing: [1;33m-n 'content'[0m
+  Description: Non-empty string test with -n should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_TEST][0m Testing: [1;33m-n ''[0m
+  Description: Empty string test with -n should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[ 1 -eq 1 ][0m
+  Description: Single bracket test should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 1 -eq 1 ]][0m
+  Description: Double bracket test should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33mtest 1 -eq 1[0m
+  Description: Test command should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 'hello' == 'hello' ]][0m
+  Description: Double equals in double brackets should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 'hello' == hell* ]][0m
+  Description: Pattern matching in double brackets should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 'hello' == bye* ]][0m
+  Description: Non-matching pattern should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 'hello' =~ ^hel ]][0m
+  Description: Regex matching should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 'hello' =~ ^bye ]][0m
+  Description: Non-matching regex should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 3 -gt 2 ]][0m
+  Description: Numeric compare true in [[ ]]
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[[ 3 -gt 5 ]][0m
+  Description: Numeric compare false in [[ ]]
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[ 3 -gt 2 ][0m
+  Description: Test builtin true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TEST_SYNTAX][0m Testing: [1;33m[ -n 'x' -a -z '' ][0m
+  Description: -a with true && true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((3==4))[0m
+  Description: Arithmetic equality that is false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((5==5))[0m
+  Description: Arithmetic equality that is true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((10>5))[0m
+  Description: Arithmetic greater than should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((3<2))[0m
+  Description: Arithmetic less than should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((1+1==2))[0m
+  Description: Arithmetic addition equation should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((10/2==5))[0m
+  Description: Arithmetic division equation should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((2**3==8))[0m
+  Description: Arithmetic exponentiation should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((5%3==2))[0m
+  Description: Arithmetic modulus should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((1&&1))[0m
+  Description: Arithmetic logical AND with true values should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((1||0))[0m
+  Description: Arithmetic logical OR should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((0))[0m
+  Description: Arithmetic zero should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((1))[0m
+  Description: Arithmetic non-zero should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((-5))[0m
+  Description: Arithmetic negative number should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((!0))[0m
+  Description: Logical NOT of 0 is true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC][0m Testing: [1;33m((!1))[0m
+  Description: Logical NOT of non-zero is false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m(((5+3)*2==16))[0m
+  Description: Complex arithmetic with parentheses should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((10>5 && 3<7))[0m
+  Description: Arithmetic with logical operators should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((1?42:0))[0m
+  Description: Ternary operator should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((0?42:13))[0m
+  Description: Ternary with false condition should return else value
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((2+3*4==14))[0m
+  Description: Multiplication before addition should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((10-5-2==3))[0m
+  Description: Left-to-right subtraction should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((2**3**2==512))[0m
+  Description: Right-to-left exponentiation should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((1+2>2))[0m
+  Description: Addition before comparison should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((5>3==1))[0m
+  Description: Comparison before equality should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((1&&1&&1))[0m
+  Description: Multiple AND operations should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((1&&1&&0))[0m
+  Description: Multiple AND with one false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((0||0||1))[0m
+  Description: Multiple OR with one true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((0||0||0))[0m
+  Description: Multiple OR all false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((1&&(0||1)))[0m
+  Description: AND with OR in parentheses should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITHMETIC_COMPLEX][0m Testing: [1;33m((!0&&!0))[0m
+  Description: Multiple negations should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TERNARY][0m Testing: [1;33m((1?1:0))[0m
+  Description: Ternary with true result should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TERNARY][0m Testing: [1;33m((0?1:0))[0m
+  Description: Ternary with false result should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[TERNARY][0m Testing: [1;33m((5>3?10:20))[0m
+  Description: Ternary with comparison condition should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TERNARY][0m Testing: [1;33m((5<3?10:20))[0m
+  Description: Ternary false condition should evaluate else branch
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[TERNARY][0m Testing: [1;33m((1?1?1:0:0))[0m
+  Description: Nested ternary should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPLEX][0m Testing: [1;33m[ -f /etc/passwd ] && [ -d /etc ][0m
+  Description: AND expression with both parts true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPLEX][0m Testing: [1;33m[ -f /nonexistent ] && [ -d /etc ][0m
+  Description: AND expression with first part false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMPLEX][0m Testing: [1;33m[ -f /nonexistent ] || [ -d /etc ][0m
+  Description: OR expression with second part true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPLEX][0m Testing: [1;33m[ -f /nonexistent ] || [ -d /nonexistent ][0m
+  Description: OR expression with both parts false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMPLEX][0m Testing: [1;33m[[ -f /etc/passwd && -d /etc ]][0m
+  Description: Multiple conditions in double brackets should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPLEX][0m Testing: [1;33m[[ -f /etc/passwd ]] && [[ -d /etc ]][0m
+  Description: Multiple separate test conditions should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPLEX][0m Testing: [1;33m(( (5>3) && (10>8) ))[0m
+  Description: Nested comparisons in arithmetic should work
+[0;32mPASS[0m - Got expected result: true
+
+Setting test variables...
+[0;34m[VARIABLES][0m Testing: [1;33m\$TRUE_VAR[0m
+  Description: Variable reference (not value) should be false without eval
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[VARIABLES][0m Testing: [1;33m"\\$TRUE_VAR"[0m
+  Description: Quoted variable reference should be false without eval
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[VARIABLES][0m Testing: [1;33mtrue[0m
+  Description: Expanded true variable should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[VARIABLES][0m Testing: [1;33mfalse[0m
+  Description: Expanded false variable should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[VARIABLES][0m Testing: [1;33m[0m
+  Description: Expanded empty variable should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[VARIABLES][0m Testing: [1;33m${UNSET_VAR}[0m
+  Description: Brace expansion of unset var should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[VARIABLES][0m Testing: [1;33m[0m
+  Description: Unset expands to empty should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[VARIABLES][0m Testing: [1;33mtrue[0m
+  Description: Parameter expansion inside substitution should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EDGE][0m Testing: [1;33mtrue[0m
+  Description: Command substitution with true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EDGE][0m Testing: [1;33mfalse[0m
+  Description: Command substitution with false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EDGE][0m Testing: [1;33m; echo safe[0m
+  Description: Command that fails but semicolon separates should still run second part
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EDGE][0m Testing: [1;33m$(ls) > /dev/null[0m
+  Description: Command with output redirection should work as expected
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EDGE][0m Testing: [1;33m`true`[0m
+  Description: Backtick command substitution with true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EDGE][0m Testing: [1;33m`false`[0m
+  Description: Backtick command substitution with false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EDGE][0m Testing: [1;33mtrue[0m
+  Description: Legacy backticks substitution
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EDGE][0m Testing: [1;33m  true  [0m
+  Description: Substitution with spaces around true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[INVALID][0m Testing: [1;33m((1+2)[0m
+  Description: Malformed arithmetic expression should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((1+2)))[0m
+  Description: Extra parenthesis should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m(([0m
+  Description: Empty arithmetic expression should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((3 4))[0m
+  Description: Missing operator should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((+))[0m
+  Description: Operator without operands should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((3===4))[0m
+  Description: Invalid operator should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((1 2 3))[0m
+  Description: Numbers without operators should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((++))[0m
+  Description: Increment without variable should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((--))[0m
+  Description: Decrement without variable should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((1/))[0m
+  Description: Division without second operand should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((*/2))[0m
+  Description: Multiplication without first operand should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m[[]][0m
+  Description: Empty double bracket test should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m[][0m
+  Description: Empty single bracket test should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m((1+[0m
+  Description: Unclosed arithmetic should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m[[ 1 -eq[0m
+  Description: Incomplete comparison should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m[[[0m
+  Description: Dangling [[ should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m][0m
+  Description: Stray ] is syntax error should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33mfi[0m
+  Description: Dangling fi should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[INVALID][0m Testing: [1;33m}[0m
+  Description: Stray brace should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BITWISE][0m Testing: [1;33m((8>>2==2))[0m
+  Description: Right shift should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m((2<<1==4))[0m
+  Description: Left shift should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m(((5&3)==1))[0m
+  Description: Bitwise AND should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m((5|3==7))[0m
+  Description: Bitwise OR should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m((5^3==6))[0m
+  Description: Bitwise XOR should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m((~0==-1))[0m
+  Description: Bitwise NOT of 0 should be -1
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m((~-1==0))[0m
+  Description: Bitwise NOT of -1 should be 0
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m(((~5&5)==0))[0m
+  Description: Number AND its complement should be 0
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BITWISE][0m Testing: [1;33m(( (3&~1)==2 ))[0m
+  Description: Masking with bitwise NOT
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_CASE][0m Testing: [1;33mTRUE[0m
+  Description: Uppercase TRUE should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_CASE][0m Testing: [1;33mFalse[0m
+  Description: Mixed-case False should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[WHITESPACE][0m Testing: [1;33m   true[0m
+  Description: Leading spaces before true should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33mfalse   [0m
+  Description: Trailing spaces after false should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[WHITESPACE][0m Testing: [1;33m  TrUe  [0m
+  Description: Spaces around mixed-case true should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m	[0m
+  Description: Tab character should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m   [0m
+  Description: Multiple spaces should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m
+[0m
+  Description: Newline character should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m	[0m
+  Description: Tab via ANSI-C quoting should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m  1  [0m
+  Description: Number with surrounding spaces should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33mhello
+world[0m
+  Description: String with embedded newline should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m
+[0m
+  Description: CRLF should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m 	 
+ [0m
+  Description: Mixed ASCII whitespace only should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[WHITESPACE][0m Testing: [1;33m 	true	 [0m
+  Description: Whitespace with bare true in middle should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NEGATION][0m Testing: [1;33m! false[0m
+  Description: Negation of false should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NEGATION][0m Testing: [1;33m! true[0m
+  Description: Negation of true should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[NEGATION][0m Testing: [1;33m! -f /nonexistent[0m
+  Description: Negation of false file test should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NEGATION][0m Testing: [1;33m! -d /etc[0m
+  Description: Negation of true directory test should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[NEGATION][0m Testing: [1;33m! ((0))[0m
+  Description: Negation of arithmetic zero should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NEGATION][0m Testing: [1;33m! ((1))[0m
+  Description: Negation of arithmetic non-zero should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[CHAINING][0m Testing: [1;33mtrue && true[0m
+  Description: AND chain with both true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[CHAINING][0m Testing: [1;33mtrue && false[0m
+  Description: AND chain with second false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[CHAINING][0m Testing: [1;33mfalse || true[0m
+  Description: OR chain with second true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[CHAINING][0m Testing: [1;33mfalse || false[0m
+  Description: OR chain with both false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[CHAINING][0m Testing: [1;33mtrue && false || true[0m
+  Description: AND/OR precedence should yield true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[CHAINING][0m Testing: [1;33m( false && true ) || ( true && true )[0m
+  Description: Grouped logic should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PIPES][0m Testing: [1;33mecho test | grep -q test[0m
+  Description: Pipe to grep with match should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PIPES][0m Testing: [1;33mecho test | grep -q nomatch[0m
+  Description: Pipe to grep without match should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[PIPES][0m Testing: [1;33mtrue | true[0m
+  Description: Pipe between true commands should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PIPES][0m Testing: [1;33mfalse | true[0m
+  Description: Pipe returns exit status of last command
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PIPES][0m Testing: [1;33mtrue | false[0m
+  Description: Pipeline exit is last cmd (false)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[PIPES][0m Testing: [1;33mecho ok | grep -q ok[0m
+  Description: grep finds 'ok' should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PIPES][0m Testing: [1;33mecho ok | grep -q no[0m
+  Description: grep does not find 'no' should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(true)[0m
+  Description: Subshell with true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(false)[0m
+  Description: Subshell with false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(exit 0)[0m
+  Description: Subshell with exit 0 should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(exit 1)[0m
+  Description: Subshell with exit 1 should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(exit 42)[0m
+  Description: Subshell with non-zero exit should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(exit 127)[0m
+  Description: Exit 127 (command not found) should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SUBSHELL][0m Testing: [1;33m(exit 255)[0m
+  Description: Exit 255 should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BLOCK][0m Testing: [1;33m{ true; }[0m
+  Description: Brace group true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BLOCK][0m Testing: [1;33m{ false; }[0m
+  Description: Brace group false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BLOCK][0m Testing: [1;33m{ echo x >/dev/null; true; }[0m
+  Description: Multi-command block final status true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BLOCK][0m Testing: [1;33m{ true; false; }[0m
+  Description: Last command determines status should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BLOCK][0m Testing: [1;33mfalse; true[0m
+  Description: Semicolon sequence should return status of last (true)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BLOCK][0m Testing: [1;33mtrue; false[0m
+  Description: Last command false should return overall false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BLOCK][0m Testing: [1;33m{ false; :; }[0m
+  Description: ':' builtin succeeds, last wins should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho \![0m
+  Description: Escaped exclamation should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho \$HOME[0m
+  Description: Escaped dollar sign should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho \*[0m
+  Description: Escaped asterisk should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho \;[0m
+  Description: Escaped semicolon should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho "a|b"[0m
+  Description: Quoted pipe character should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho "a&b"[0m
+  Description: Quoted ampersand should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SPECIAL_CHARS][0m Testing: [1;33mecho "a*b"[0m
+  Description: Quoted glob should not expand; echo exits 0
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPARISON][0m Testing: [1;33m((0==0))[0m
+  Description: Zero equality should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPARISON][0m Testing: [1;33m((-1==-1))[0m
+  Description: Negative equality should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPARISON][0m Testing: [1;33m((1!=2))[0m
+  Description: Inequality should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPARISON][0m Testing: [1;33m((1!=1))[0m
+  Description: False inequality should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMPARISON][0m Testing: [1;33m((5>=5))[0m
+  Description: Greater than or equal with equal should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPARISON][0m Testing: [1;33m((5>=6))[0m
+  Description: Greater than or equal with less should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMPARISON][0m Testing: [1;33m((3<=3))[0m
+  Description: Less than or equal with equal should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMPARISON][0m Testing: [1;33m((3<=2))[0m
+  Description: Less than or equal with greater should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EMPTY_CMD][0m Testing: [1;33m:[0m
+  Description: Colon (no-op) command should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EMPTY_CMD][0m Testing: [1;33mtrue;[0m
+  Description: Command with trailing semicolon should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EMPTY_CMD][0m Testing: [1;33mtrue ;true[0m
+  Description: Two commands separated by semicolon should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[EMPTY_CMD][0m Testing: [1;33mexit 0 || true[0m
+  Description: Exit in subshell with OR fallback should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mecho test >/dev/null[0m
+  Description: Stdout redirect should succeed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mecho test 2>/dev/null[0m
+  Description: Stderr redirect should succeed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mecho test &>/dev/null[0m
+  Description: Both stdout and stderr redirect should succeed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mls /nonexistent 2>/dev/null[0m
+  Description: Failed command with stderr redirect should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[REDIRECT][0m Testing: [1;33mcat /etc/passwd >/dev/null[0m
+  Description: Read file to null should succeed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mtrue >/dev/null 2>&1[0m
+  Description: True with redirection should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mfalse 2>/dev/null[0m
+  Description: False remains false even with redirection
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[REDIRECT][0m Testing: [1;33mcat </dev/null[0m
+  Description: Input redirection should succeed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mcat <<< hi >/dev/null[0m
+  Description: Here-string should succeed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[REDIRECT][0m Testing: [1;33mgrep -q hi <<<'hi'[0m
+  Description: Here-string with grep should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NESTED][0m Testing: [1;33m((((1))))[0m
+  Description: Quadruple nested parentheses should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NESTED][0m Testing: [1;33m((((5+3)*2-1)==15))[0m
+  Description: Nested arithmetic with operations should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMA][0m Testing: [1;33m((1,2,3))[0m
+  Description: Comma operator should return last value
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMA][0m Testing: [1;33m((5,0))[0m
+  Description: Comma operator with last value 0 should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[COMMA][0m Testing: [1;33m((0,1))[0m
+  Description: Comma operator should ignore first value
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMA][0m Testing: [1;33m((x=1,y=2,x+y))[0m
+  Description: Comma with assignments should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMA][0m Testing: [1;33m((x=5,x==5))[0m
+  Description: Assignment in arithmetic should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMA][0m Testing: [1;33m((y=0,!y))[0m
+  Description: Assignment of zero then negation should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[COMMA][0m Testing: [1;33m((a=1,b=2,a+b==3))[0m
+  Description: Multiple assignments should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((00==0))[0m
+  Description: Leading zeros should be ignored
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((007==7))[0m
+  Description: Multiple leading zeros should be ignored
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((0x10==16))[0m
+  Description: Hexadecimal notation should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((0x0==0))[0m
+  Description: Hex zero should equal decimal zero
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((0xFF==255))[0m
+  Description: Uppercase hex should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((9999999999>1))[0m
+  Description: Very large number comparison should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((999999999999999999>0))[0m
+  Description: Extremely large number should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[NUMBER_EDGE][0m Testing: [1;33m((1000000*1000000==1000000000000))[0m
+  Description: Large multiplication should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((10/3==3))[0m
+  Description: Integer division should truncate
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((10/3==3.33))[0m
+  Description: Floating point comparison should fail (bash uses integers)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[DIVISION][0m Testing: [1;33m((7%4==3))[0m
+  Description: Modulo operation should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((100%10==0))[0m
+  Description: Even modulo should return 0
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((-10%3==-1))[0m
+  Description: Negative modulo should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((100-100==0))[0m
+  Description: Subtraction to zero should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((1-1==0))[0m
+  Description: Simple subtraction to zero should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((0*1000000==0))[0m
+  Description: Multiply by zero should give zero
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m((0+0==0))[0m
+  Description: Zero addition should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DIVISION][0m Testing: [1;33m(( 10/0 ))[0m
+  Description: Division by zero should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[UNARY][0m Testing: [1;33m((-5<0))[0m
+  Description: Negative number less than zero should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[UNARY][0m Testing: [1;33m((+5>0))[0m
+  Description: Positive number greater than zero should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[UNARY][0m Testing: [1;33m((-(-5)==5))[0m
+  Description: Double negation should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[UNARY][0m Testing: [1;33m((-(5)==-5))[0m
+  Description: Negation of positive should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_EDGE][0m Testing: [1;33m[[ '' = '' ]][0m
+  Description: Empty string equality should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_EDGE][0m Testing: [1;33m[[ 'a' < 'b' ]][0m
+  Description: Lexicographic less than should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_EDGE][0m Testing: [1;33m[[ 'b' > 'a' ]][0m
+  Description: Lexicographic greater than should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_EDGE][0m Testing: [1;33m[[ '10' < '9' ]][0m
+  Description: String comparison (not numeric) should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRING_EDGE][0m Testing: [1;33m[[ 'ABC' == 'abc' ]][0m
+  Description: Case-sensitive comparison should work
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[STRING_EDGE][0m Testing: [1;33m[[ 'ABC' != 'abc' ]][0m
+  Description: Case-sensitive comparison should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PROCESS_EXIT][0m Testing: [1;33mbash -c 'exit 0'[0m
+  Description: Bash subprocess with exit 0 should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PROCESS_EXIT][0m Testing: [1;33mbash -c 'exit 1'[0m
+  Description: Bash subprocess with exit 1 should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[PROCESS_EXIT][0m Testing: [1;33msh -c true[0m
+  Description: Shell subprocess with true should return true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PROCESS_EXIT][0m Testing: [1;33msh -c false[0m
+  Description: Shell subprocess with false should return false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[STRESS][0m Testing: [1;33m((1+1+1+1+1+1+1+1+1+1==10))[0m
+  Description: Long addition chain should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRESS][0m Testing: [1;33m((1*1*1*1*1*1*1*1*1*1==1))[0m
+  Description: Long multiplication chain should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRESS][0m Testing: [1;33m((1&&1&&1&&1&&1&&1&&1&&1&&1))[0m
+  Description: Long logical AND chain should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRESS][0m Testing: [1;33m((0||0||0||0||0||0||0||0||1))[0m
+  Description: Long logical OR chain should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[STRESS][0m Testing: [1;33m(( (1<<30) > (1<<29) ))[0m
+  Description: Shifts with big numbers
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BUILTINS][0m Testing: [1;33mtype ls >/dev/null 2>&1[0m
+  Description: Type command should succeed for existing command
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BUILTINS][0m Testing: [1;33mtype nonexistentcmd123 >/dev/null 2>&1[0m
+  Description: Type command should fail for non-existent command
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BUILTINS][0m Testing: [1;33mcommand -v bash >/dev/null[0m
+  Description: Command -v should succeed for bash
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BUILTINS][0m Testing: [1;33mwhich ls >/dev/null 2>&1[0m
+  Description: Which command should find ls
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33m[[ /etc/passwd == /etc/passwd ]][0m
+  Description: Exact path match should work
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33m[[ /etc/passwd == /etc/* ]][0m
+  Description: Wildcard pattern should match
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33m[[ /etc/passwd == /tmp/* ]][0m
+  Description: Non-matching wildcard should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[GLOB][0m Testing: [1;33m[[ abc == a?c ]][0m
+  Description: Question mark wildcard should match
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33m[[ abc == a??c ]][0m
+  Description: Wrong number of wildcards should not match
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[GLOB][0m Testing: [1;33mecho * >/dev/null[0m
+  Description: Glob expansion typically succeeds
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33mecho {a,b} >/dev/null[0m
+  Description: Brace expansion produces words; echo succeeds
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33m[[ a == a* ]][0m
+  Description: Pattern match true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[GLOB][0m Testing: [1;33m[[ a == b* ]][0m
+  Description: Pattern match false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SHORT_CIRCUIT][0m Testing: [1;33mfalse && nonexistentcommand123[0m
+  Description: AND should short-circuit on false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SHORT_CIRCUIT][0m Testing: [1;33mtrue || nonexistentcommand123[0m
+  Description: OR should short-circuit on true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[SHORT_CIRCUIT][0m Testing: [1;33m((0 && 1/0))[0m
+  Description: Arithmetic AND should short-circuit (avoid division by zero)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[SHORT_CIRCUIT][0m Testing: [1;33m((1 || 1/0))[0m
+  Description: Arithmetic OR should short-circuit (avoid division by zero)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FS_TMP][0m Testing: [1;33mf=$(mktemp) && [[ -f "$f" ]][0m
+  Description: mktemp created file exists
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FS_TMP][0m Testing: [1;33mf=$(mktemp) && rm -f "$f" && [[ -e "$f" ]][0m
+  Description: Removed temp file should not exist
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FS_TMP][0m Testing: [1;33md=$(mktemp -d) && [[ -d "$d" ]][0m
+  Description: mktemp -d creates directory
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FS_TMP][0m Testing: [1;33md=$(mktemp -d) && rmdir "$d" && [[ -d "$d" ]][0m
+  Description: Removed temp dir should not exist
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[ENV_ISO][0m Testing: [1;33mexport X=1; [[ -n "$X" ]][0m
+  Description: Environment inside eval is visible to itself
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ENV_ISO][0m Testing: [1;33m[[ -z "$SOME_DEF_NOT_SET" ]][0m
+  Description: Unset var empty inside subshell
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITH_LIMITS][0m Testing: [1;33m(( 2147483647 > 0 ))[0m
+  Description: Large positive int
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ARITH_LIMITS][0m Testing: [1;33m(( -2147483648 < 0 ))[0m
+  Description: Large negative int
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33myes[0m
+  Description: Common true synonym 'yes' should be true (if supported)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33mno[0m
+  Description: Common false synonym 'no' should be false (if supported)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33mon[0m
+  Description: 'on' should be true (if supported)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33moff[0m
+  Description: 'off' should be false (if supported)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33my[0m
+  Description: Single-letter 'y' should be true (if supported)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33mn[0m
+  Description: Single-letter 'n' should be false (if supported)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33menable[0m
+  Description: 'enable' should be true (if supported)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BOOLEAN_WORDS][0m Testing: [1;33mdisable[0m
+  Description: 'disable' should be false (if supported)
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[FILE_TIME][0m Testing: [1;33mf1=$(mktemp) && sleep 1 && f2=$(mktemp) && [[ "$f2" -nt "$f1" ]][0m
+  Description: -nt newer-than should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_TIME][0m Testing: [1;33mf1=$(mktemp) && sleep 1 && f2=$(mktemp) && [[ "$f1" -ot "$f2" ]][0m
+  Description: -ot older-than should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_LINK][0m Testing: [1;33mt=$(mktemp) && ln -s "$t" s && [[ -L s && -e s ]][0m
+  Description: Symlink to existing target: -L and -e true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_LINK][0m Testing: [1;33mln -s /nonexistent s && [[ -L s && ! -e s ]][0m
+  Description: Broken symlink: -L true, -e false
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FILE_SPECIAL][0m Testing: [1;33mp=$(mktemp -u) && mkfifo "$p" && [[ -p "$p" ]][0m
+  Description: Named pipe should satisfy -p
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FD_TTY][0m Testing: [1;33mtrue <&-[0m
+  Description: Command succeeds with stdin closed
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[FD_TTY][0m Testing: [1;33mcat <&- >/dev/null[0m
+  Description: cat fails when stdin closed
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BG_WAIT][0m Testing: [1;33mfalse & wait %1[0m
+  Description: Background false reported by wait should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[BG_WAIT][0m Testing: [1;33mtrue & wait %1[0m
+  Description: Background true reported by wait should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BG_WAIT][0m Testing: [1;33mfalse & :; wait %1 || :; true[0m
+  Description: Recover after bg failure and succeed overall
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PROC_SUB][0m Testing: [1;33mdiff <(echo a) <(echo a) >/dev/null[0m
+  Description: Process substitution identical diff should be true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[PROC_SUB][0m Testing: [1;33mcomm <(printf 'a
+b
+') <(printf 'a
+c
+') >/dev/null[0m
+  Description: comm executes successfully
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BASH_SHOPT][0m Testing: [1;33mbash -c 'shopt -s extglob; [[ aaaa == a+(a) ]]'[0m
+  Description: Extended globbing should match with extglob
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BASH_SHOPT][0m Testing: [1;33mbash -c 'shopt -s nocasematch; [[ Foo == foo ]]'[0m
+  Description: nocasematch makes [[ ]] case-insensitive
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[BASH_SHOPT][0m Testing: [1;33mbash -c 'shopt -u nocasematch; [[ Foo == foo ]]'[0m
+  Description: Without nocasematch, case differs
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EXEC_FAIL][0m Testing: [1;33mf=$(mktemp); echo "echo hi" >"$f"; chmod -x "$f"; "$f" >/dev/null 2>&1[0m
+  Description: Non-executable script: exit 126 should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[EXEC_FAIL][0m Testing: [1;33md=$(mktemp -d); "$d" >/dev/null 2>&1[0m
+  Description: Attempting to exec a directory should be false
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[UNICODE_WS][0m Testing: [1;33m [0m
+  Description: NBSP should count as whitespace-only input (if treated as non-empty true)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[UNICODE_WS][0m Testing: [1;33m [0m
+  Description: Em space treated as whitespace-only (if non-empty is true)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[UNICODE_WS][0m Testing: [1;33m   	 [0m
+  Description: Mixed ASCII + Unicode whitespace
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ENV_IFS][0m Testing: [1;33mIFS=, bash -c 'test x,y = x,y' [0m
+  Description: Setting IFS should not break simple equality
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[ENV_IFS][0m Testing: [1;33mIFS= bash -c '[[ -n $IFS ]]' [0m
+  Description: Empty IFS still defined, -n true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DOUBLE_BRACKET][0m Testing: [1;33m[[ abc =~ ^a.c$ ]][0m
+  Description: Regex dot should match single char
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DOUBLE_BRACKET][0m Testing: [1;33m[[ abc =~ ^ab$ ]][0m
+  Description: Regex strict anchor should fail
+[0;32mPASS[0m - Got expected result: false
+
+[0;34m[DOUBLE_BRACKET][0m Testing: [1;33m[[ -v BASH_VERSION ]][0m
+  Description: -v var set test (bash>=4.2)
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[DOUBLE_BRACKET][0m Testing: [1;33mbash -c 'unset ZZ; [[ ! -v ZZ ]]'[0m
+  Description: -v unset var should be false; negation true
+[0;32mPASS[0m - Got expected result: true
+
+[0;34m[LONG_ARG][0m Testing: [1;33mprintf '%*s' 5000 x >/dev/null[0m
+  Description: Long arg handling via printf should succeed
+[0;32mPASS[0m - Got expected result: true
+
+=== TEST SUMMARY ===
+Tests run:    332
+Tests passed: [0;32m332[0m
+Tests failed: [0;32m0[0m

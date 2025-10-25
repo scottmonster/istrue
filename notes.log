@@ -1,0 +1,149 @@
+VALID BASH EXPRESSIONS:
+'((3==4))'
+'((   -123   !=456 ))'
+'((789<   -321 ))'
+'((   10<=20))'
+'((-30 >=   40 ))'
+'(( 5>6   ))'
+'((  -7   +8))'
+'((9 -   -10   ))'
+'((   11*12))'
+'((13    /14 ))'
+'((15%  16))'
+'((   2**   8 ))'
+'(( 5<<2))'
+'((8   >>3   ))'
+'(( 6&  3))'
+'(( 4   |5))'
+'((7 ^ 2  ))'
+'(( ~9))'
+'(( !0   ))'
+'((1&& 0))'
+'(( 1  ||  0   ))'
+'(( 0?1:2 ))'
+'((3 ? 4 :   5))'
+# Pre/post increment/decrement with different variables
+'(( ++num_var ))'
+'(( __num_var++ ))'
+'(( --not_num_var))'
+'(( __not_num_var--))'
+# Assignment operations with different variables
+'(( -num_var =   -100 ))'
+'(( __num_var+=200   ))'
+'(( not_num_var-=   -300))'
+'(( __not_num_var*=4 ))'
+'(( num_var/=   5))'
+'(( __not_num_var%=6))'
+# Complex expressions - numbers only
+'(( (123 +  456) *  2 ))'
+'((  10 - ( 4 /2)    ))'
+'((   (-7 *4)   +8  ))'
+'(( 20/((2 +3)) ))'
+'(( (15 % 4)== (3) ))'
+'(( (6 << (1+ 1)) ))'
+'(( ((3+2)*(4 -1)) ))'
+'(( (100 >= (50* 2)) ))'
+'((   ((-5)!= (5))  ||  ( 1==1) ))'
+'(( (8 + ( (2*3) -1)) ))'
+'(( ( 9 & (3 |1)) ))'
+'(( ( (14>>2) + ( 16<<1)  ) ))'
+# Complex expressions with variables
+'(( ((num_var--)==6) ?1:0 ))'
+'((  __not_num_var <<=4    ))'
+'((   not_num_var   >>= 2 ))'
+'(( __num_var   &=5 ))'
+'((  -num_var^=   6))'
+'((   __not_num_var |=   7 ))'
+# Comma operator
+'((1 ,2))'
+'((   ( num_var=1  , num_var*2 )  ))'
+'(( 100 ,   200 ,300))'
+
+
+INVLAID BASH EXPRESSIONS:
+'((1+2)'          # missing one closing parenthesis  
+'((1+2)))'        # extra closing parenthesis  
+'((1+2]'          # mismatched bracket type  
+'([1+2))'         # incorrect mix of parentheses and brackets  
+'((1+2) )'        # misplaced closing parentheses grouping  
+'((1+2) ))'       # three closing parentheses, one too many  
+'((())'           # missing two closing parentheses  
+'(( 3 4 ))'       # missing operator between operands  
+'(( + ))'         # operator only, no operands  
+'(( 3 + ))'       # missing right operand for +  
+'(( + 3 ))'       # missing left operand for +  
+'(( 3 ** ))'      # missing exponent after **  
+'(( ** 3 2 ))'    # misplaced ** operator, missing first operand  
+'(( 3 << ))'      # missing shift amount for <<  
+'(( >> 2 ))'      # missing value to shift for >>  
+'(( 1 && ))'      # missing second operand for &&  
+'(( || 0 ))'      # missing first operand for ||  
+'(( 3 === 4 ))'   # === not a valid operator in Bash arithmetic  
+'(( 3 !== 4 ))'   # !== not supported  
+'(( 3 =< 4 ))'    # =< invalid comparison (use <=)  
+'(( 4 => 5 ))'    # => invalid comparison (use >=)  
+'(( 3 ^^ 2 ))'    # ^^ not recognized  
+'(( 3 // 2 ))'    # // integer division not supported  
+'(( 3 %% 2 ))'    # %% invalid modulus operator  
+'(( 3 **= 2 ))'   # **= is not a valid compound assignment  
+'(( x ||= 1 ))'   # ||= is logical-or assignment, not arithmetic  
+'(( y &&= 2 ))'   # &&= is logical-and assignment, not arithmetic  
+'(( 3 = 4 ))'     # cannot assign to a literal  
+'(( 5 =+ 2 ))'    # =+ parsed as = then +, left side invalid  
+'(( 6 -= 2 ))'    # -= requires a variable on the left  
+'(( 7 *= 8 ))'    # *= requires a variable on the left  
+'(( 9 /= 3 ))'    # /= requires a variable on the left  
+'(( 10 %= 3 ))'   # %= requires a variable on the left  
+'(( 11 <<= 1 ))'  # <<= requires a variable on the left  
+'(( 12 >>= 1 ))'  # >>= requires a variable on the left  
+'(( 13 &= 1 ))'   # &= requires a variable on the left  
+'(( 14 |= 1 ))'   # |= requires a variable on the left  
+'(( 3 =! 4 ))'    # =! not a valid comparison (use !=)  
+'(( 3 !? 4 ))'    # !? not recognized  
+'(( 3 <> 4 ))'    # <> not supported (use !=)  
+'(( 3 >< 4 ))'    # >< invalid operator sequence  
+'(( 5 ==  ))'     # missing right operand for ==  
+'((  <= 5 ))'     # missing left operand for <=  
+'(( 5 >= ))'      # missing right operand for >=  
+'(( == 5 ))'      # missing left operand for ==  
+'(( 1num=5 ))'    # variable name cannot start with a digit  
+'(( var!able=3 ))' # ! invalid in variable names  
+'(( -var=4 ))'    # variable name cannot start with -  
+'(( var*=5 ))'    # * invalid in variable names  
+'(( var#num=6 ))' # # invalid in variable names  
+'(( var%num=7 ))' # % invalid in variable names  
+'(( var?num=8 ))' # ? invalid in variable names  
+'(( var name=9 ))' # space invalid in variable names  
+'(( ++5 ))'       # cannot increment a literal  
+'(( 6++ ))'       # cannot post-increment a literal  
+'(( --3 ))'       # cannot decrement a literal  
+'(( 4-- ))'       # cannot post-decrement a literal  
+'(( +++var ))'    # too many unary + operators  
+'(( var--- ))'    # ambiguous -- after variable  
+'(( + -5 ))'      # mixed unary + and - without grouping  
+'(( - +5 ))'      # mixed unary - and + without grouping  
+'(( 1 ? : 2 ))'   # missing true-expression in ternary  
+'(( ?1:2 ))'      # missing condition before ?  
+'(( 1?2: ))'      # missing false-expression after :  
+'(( 1? :2 ))'     # missing true-expression after ?  
+'(( :?1:2 ))'     # malformed ternary syntax  
+'(( 1 ?2:3?4:5 ))' # nested ternary without parentheses  
+'(( 1?2?3:4:5 ))'  # malformed nested ternary  
+'(( 1?2:3:4 ))'    # too many colons in ternary  
+'(( "a" + 1 ))'    # string literal not allowed in arithmetic  
+'(( 1 + "b" ))'    # string literal not allowed in arithmetic  
+'(( "x" * "y" ))'  # strings cannot be multiplied  
+'(( foo + bar ))'  # barewords treated as 0 or error if not vars  
+'(( "a" ++ ))'     # cannot apply ++ to a string  
+'(( -- "b" ))'     # cannot apply -- to a string  
+'(( "c" = "d" ))'  # cannot assign between literals  
+'(( "e" && 3 ))'   # logical AND on string literal  
+'(( ,1+2 ))'       # stray comma at start  
+'(( 1+2,,3 ))'     # double comma in expression  
+'(( 1+ 2 3+4 ))'   # missing operator between 2 and 3  
+'(( $ ))'          # lone $ is invalid  
+'(( ))'            # empty expression  
+'(( #comment ))'   # comments not allowed inside (( ))  
+'(( 1 + # 2 ))'    # inline comment breaks parsing  
+'(( 1 + (2) )) extra' # trailing text after closing ))  
+'(( 1+(2)  '       # missing closing parentheses  
