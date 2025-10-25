@@ -1,7 +1,7 @@
 
 # istrue
 
-A powerful bash utility that evaluates expressions and determines their truthiness. `istrue` can handle a wide variety of input types including literals, arithmetic expressions, file tests, shell commands, and more.
+A truthiness utility that behaves the way I want it to. `istrue` can handle a wide variety of input types including literals, arithmetic expressions, file tests, shell commands, and more.
 
 ## Features
 
@@ -13,8 +13,8 @@ A powerful bash utility that evaluates expressions and determines their truthine
 
 ## Installation
 
-### Quick Install (Recommended)
-
+### Quick Install 
+via everyones favorite method:
 ```bash
 sudo curl -fsSL -o /usr/local/bin/istrue https://raw.githubusercontent.com/scottmonster/istrue/refs/heads/master/istrue && sudo chmod +x /usr/local/bin/istrue
 ```
@@ -23,7 +23,7 @@ sudo curl -fsSL -o /usr/local/bin/istrue https://raw.githubusercontent.com/scott
 
 1. Download the script:
    ```bash
-   curl -fsSL -O https://raw.githubusercontent.com/scottmonster/istrue/refs/heads/master/istrue && chmod +x istrue && sudo mv istrue /usr/local/bin/istrue
+   curl -fsSL -O https://raw.githubusercontent.com/scottmonster/istrue/refs/heads/master/istrue 
    ```
 
 2. Make it executable and move to your PATH:
